@@ -1,0 +1,44 @@
+{
+	"db": "host=db sslmode=disable dbname=postgres user=docker password=docker",
+	"debug": true,
+	"secret": "0000000000000000000000000000000000000000000000000000000000000000",
+	"cookiesecret": "0000000000000000000000000000000000000000000000000000000000000000",
+	"baseurl": "http://localhost:8080/",
+	"httpaddr": "",
+	"httporigin": "",
+	"redirectall": false,
+	"host": "0.0.0.0",
+	"port": "8080",
+	"cookieurl": "",
+	"contentpages": "",
+	"frontpagecomponent": "",
+	"footercomponent": "",
+	"menuitems": "",
+	"pwauth": true,
+	"disableregistration": false,
+	"extrabuild": "",
+	"extensionid": "",
+	"letsencrypthost": "",
+	"google": {
+		"id": "",
+		"secret": ""
+	},
+	"smtp": {
+		"addr": "smtp.gmail.com:587",
+		"identity": "",
+		"username": "dayanand240992@gmail.com",
+		"password":"136161091@Daya", 
+		"host": "smtp.gmail.com",
+		"from":"dayanand240992@gmail.com",
+		
+	
+		
+	},
+	"mailchimp": {
+		"token": "",
+		"listid": "",
+		"datacenter": ""
+	},
+	"googleanalyticsaccount": "",
+	"languages": ["en"]
+}

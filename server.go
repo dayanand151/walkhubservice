@@ -29,6 +29,7 @@ import (
 
 	"github.com/go-kit/kit/metrics/prometheus"
 	stdprometheus "github.com/prometheus/client_golang/prometheus"
+	 "github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/spf13/viper"
 	"gitlab.com/tamasd/ab"
 	"gitlab.com/tamasd/ab/providers/auth/google"
@@ -310,7 +311,8 @@ func (s *WalkhubServer) Start(addr string, certfile string, keyfile string) erro
 
 	authProviders := []auth.AuthProvider{}
 	if s.PWAuth {
-		smtpAuth := smtp.PlainAuth(s.AuthCreds.SMTP.Identity, s.AuthCreds.SMTP.Username, s.AuthCreds.SMTP.Password, s.AuthCreds.SMTP.Host)
+	
+		smtpAuth := smtp.LoginAuth(s.AuthCreds.SMTP.Username, s.AuthCreds.SMTP.Password)
 		delegate := auth.NewPasswordAuthSMTPEmailSenderDelegate(s.AuthCreds.SMTP.Addr, smtpAuth, s.BaseURL)
 		delegate.From = s.AuthCreds.SMTP.From
 		delegate.RegistrationEmailTemplate = regMailTemplate
@@ -349,7 +351,7 @@ func (s *WalkhubServer) Start(addr string, certfile string, keyfile string) erro
 		s.Logger.User().Printf("access to metrics from: %v\n", addresslist)
 		metricsRestrictAddressMiddleware = ab.RestrictAddressMiddleware(addresslist...)
 	}
-	s.Get("/metrics", stdprometheus.Handler(), metricsRestrictAddressMiddleware)
+	s.Get("/metrics", promhttp.Handler(), metricsRestrictAddressMiddleware)
 
 	siteinfoBaseURLs := []string{s.BaseURL}
 	if s.HTTPOrigin != "" {
