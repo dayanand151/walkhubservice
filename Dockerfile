@@ -11,7 +11,7 @@ RUN go get github.com/Pronovix/walkhub-service
 WORKDIR /go/src/github.com/Pronovix/walkhub-service
 RUN echo '{}' > config.json
 RUN npm install
-RUN go install github.com/Pronovix/walkhub-service/cmd/walkhub
+RUN go install github.com/dayanand151/walkhub-service/cmd/walkhub
 
 ENTRYPOINT npm run webpack && /go/bin/walkhub
 
