@@ -312,7 +312,7 @@ func (s *WalkhubServer) Start(addr string, certfile string, keyfile string) erro
 	authProviders := []auth.AuthProvider{}
 	if s.PWAuth {
 	
-		smtpAuth := smtp.LoginAuth(s.AuthCreds.SMTP.Username, s.AuthCreds.SMTP.Password)
+		smtpAuth := smtp.PlainAuth(s.AuthCreds.SMTP.Identity, s.AuthCreds.SMTP.Username, s.AuthCreds.SMTP.Password, s.AuthCreds.SMTP.Host)
 		delegate := auth.NewPasswordAuthSMTPEmailSenderDelegate(s.AuthCreds.SMTP.Addr, smtpAuth, s.BaseURL)
 		delegate.From = s.AuthCreds.SMTP.From
 		delegate.RegistrationEmailTemplate = regMailTemplate
