@@ -24,7 +24,7 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/Pronovix/walkhub-service"
+	"github.com/dayanand151/walkhubservice"
 	"github.com/spf13/viper"
 	"gitlab.com/tamasd/ab/lib/log"
 	"gitlab.com/tamasd/ab/services/auth"
