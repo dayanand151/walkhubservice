@@ -14,7 +14,7 @@
   "dependencies": {
     "urijs": "^1.16.0",
     "alt": "^0.17.8",
-    "axios": "^0.7",
+    "axios": "^0.19",
     "babel-core": "^5.8",
     "babel-loader": "^5.3",
     "babel-runtime": "^5.8",
